@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Escola Verde</title>
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --verde-escuro: #2E7D32;
+            --verde-claro: #8BC34A;
+            --verde-mais-claro: #DCEDC8;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F5F5;
+            --sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--cinza-claro);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--verde-escuro), var(--verde-claro));
+            color: var(--branco);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>') no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Navegação */
+        nav {
+            background-color: var(--verde-escuro);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--sombra);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--verde-mais-claro);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--verde-mais-claro);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Seções */
+        section {
+            padding: 4rem 0;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--branco);
+        }
+
+        section:nth-child(odd) {
+            background-color: var(--cinza-claro);
+        }
+
+        h2 {
+            color: var(--verde-escuro);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--verde-claro);
+            margin: 1rem auto;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background-color: var(--branco);
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--verde-escuro);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Equipe */
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            width: 200px;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            border: 5px solid var(--verde-claro);
+            box-shadow: var(--sombra);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            color: var(--verde-escuro);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--verde-claro);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--verde-escuro);
+            border: 4px solid var(--verde-claro);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--verde-escuro);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--branco);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--verde-mais-claro);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .cards-container, .team {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item::before {
+                left: -30px;
+            }
+        }
+
+        /* Efeitos especiais */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="fade-in">Projeto Escola Verde</h1>
+            <p class="subtitle fade-in delay-1">Promovendo sustentabilidade e conscientização ambiental</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#apresentacao">Apresentação</a></li>
+            <li><a href="#projeto">O Projeto</a></li>
+            <li><a href="#objetivos">Objetivos</a></li>
+            <li><a href="#importancia">Importância</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+        </ul>
+    </nav>
+
+    <section id="apresentacao">
+        <div class="container">
+            <h2 class="fade-in">Apresentação da Instituição</h2>
+            <div class="fade-in delay-1">
+                <p>O Projeto Escola Verde é uma iniciativa desenvolvida na Escola [Nome da Escola], localizada em Redenção, que tem como objetivo principal promover a sustentabilidade e a conscientização ambiental entre alunos, professores e toda a comunidade escolar.</p>
+                <p>Nossa escola tem um papel fundamental na formação de cidadãos conscientes de seu impacto no meio ambiente e comprometidos com práticas sustentáveis no seu dia a dia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projeto">
+        <div class="container">
+            <h2 class="fade-in">Como Surgiu o Projeto</h2>
+            <div class="timeline fade-in delay-1">
+                <div class="timeline-item">
+                    <div class="timeline-date">Junho 2024</div>
+                    <p>O Projeto Escola Verde teve início durante a semana do Meio Ambiente, fazendo parte do Junho Ambiental do município de Redenção, no dia 05/06/2024.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Evento de Lançamento</div>
+                    <p>O lançamento contou com a presença de representantes da Secretaria Municipal de Agricultura, Meio Ambiente e Desenvolvimento Urbano, marcando o início oficial das atividades.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Motivação</div>
+                    <p>A motivação inicial surgiu da necessidade de criar uma consciência ecológica na comunidade escolar e de transformar a escola em um espaço mais sustentável e educador ambiental.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="objetivos">
+        <div class="container">
+            <h2 class="fade-in">Objetivo Principal</h2>
+            <div class="cards-container">
+                <div class="card fade-in">
+                    <div class="card-img">
+                        <!-- Imagem ilustrativa - substitua por uma real -->
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sustentabilidade">
+                    </div>
+                    <div class="card-content">
+                        <h3>Sustentabilidade</h3>
+                        <p>Promover práticas sustentáveis no ambiente escolar, reduzindo o impacto ambiental e criando hábitos ecologicamente corretos.</p>
+                    </div>
+                </div>
+                <div class="card fade-in delay-1">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Conscientização">
+                    </div>
+                    <div class="card-content">
+                        <h3>Conscientização Ambiental</h3>
+                        <p>Desenvolver a consciência ecológica nos alunos, professores e comunidade, mostrando a importância da preservação ambiental.</p>
+                    </div>
+                </div>
+                <div class="card fade-in delay-2">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Ações Práticas">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ações Práticas</h3>
+                        <p>Implementar ações concretas na escola como coleta seletiva, horta comunitária, redução de desperdícios e uso consciente de recursos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="importancia">
+        <div class="container">
+            <h2 class="fade-in">Importância na Comunidade Escolar</h2>
+            <div class="fade-in delay-1">
+                <p>O Projeto Escola Verde traz diversos benefícios para a escola e seus alunos, integrando-se ao currículo escolar de forma interdisciplinar e promovendo o envolvimento de toda a comunidade.</p>
+                
+                <h3 style="margin: 2rem 0 1rem; color: var(--verde-escuro);">Benefícios:</h3>
+                <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                    <li>Formação de cidadãos ambientalmente conscientes</li>
+                    <li>Melhoria do ambiente escolar através de práticas sustentáveis</li>
+                    <li>Integração entre teoria e prática no aprendizado</li>
+                    <li>Fortalecimento do senso de comunidade e trabalho em equipe</li>
+                    <li>Economia de recursos para a escola</li>
+                </ul>
+                
+                <p>O projeto conta com a colaboração ativa dos professores, gestão escolar e comunidade local, sendo uma iniciativa que ultrapassa os muros da escola e impacta positivamente todo o entorno.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe">
+        <div class="container">
+            <h2 class="fade-in">Equipe Envolvida</h2>
+            
+            <h3 style="text-align: center; margin: 2rem 0 1rem; color: var(--verde-escuro);" class="fade-in delay-1">Professores Envolvidos</h3>
+            <div class="team">
+                <div class="team-member fade-in">
+                    <div class="member-photo">
+                        <!-- Foto do professor - substitua por uma real -->
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Professor Jocélio Pereira">
+                    </div>
+                    <h3>Jocélio Pereira</h3>
+                    <p>Professor Coordenador</p>
+                </div>
+                <div class="team-member fade-in delay-1">
+                    <div class="member-photo">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Professora Kelly Aline">
+                    </div>
+                    <h3>Kelly Aline</h3>
+                    <p>Professora Colaboradora</p>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 3rem 0 1rem; color: var(--verde-escuro);" class="fade-in delay-2">Eixo: Gestão e Negócios</h3>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;" class="fade-in delay-2">O eixo de Gestão e Negócios é uma parceria fundamental para o desenvolvimento do projeto, contribuindo com conhecimentos em administração, planejamento e execução de ações sustentáveis.</p>
+            
+            <div class="team">
+                <div class="team-member fade-in delay-2">
+                    <div class="member-photo">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Guerra">
+                    </div>
+                    <h3>Guerra</h3>
+                    <p>[Cargo]</p>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 3rem 0 1rem; color: var(--verde-escuro);" class="fade-in delay-3">Aluno Líder</h3>
+            <div class="team">
+                <div class="team-member fade-in delay-3">
+                    <div class="member-photo">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="John Calebe">
+                    </div>
+                    <h3>John Calebe</h3>
+                    <p>Aluno Líder do Projeto</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Projeto Escola Verde</div>
+                <div class="footer-links">
+                    <a href="#apresentacao">Sobre</a>
+                    <a href="#projeto">Histórico</a>
+                    <a href="#equipe">Equipe</a>
+                </div>
+                <p class="copyright">© 2024 Projeto Escola Verde. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Pequeno script para melhorar a experiência de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efeito de aparecimento conforme rolagem
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Verifica ao carregar e ao rolar
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>
