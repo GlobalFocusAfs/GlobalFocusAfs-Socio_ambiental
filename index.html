@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Escola Verde | Sustentabilidade Educacional</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Projeto Escola Verde - Promovendo sustentabilidade e educação ambiental na escola Adolfo Ferreira de Sousa em Redenção, CE.">
+    <meta name="keywords" content="educação ambiental, sustentabilidade, escola verde, projeto escolar, meio ambiente">
+    <meta name="author" content="EEEP Adolfo Ferreira de Sousa">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Projeto Escola Verde - Sustentabilidade Educacional">
+    <meta property="og:description" content="Transformando mentes e espaços através da educação ambiental em Redenção, CE">
+    <meta property="og:image" content="Imagens/putsgrila.jpeg">
+    <meta property="og:url" content="https://escolaverde.redencao.ce.gov.br">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projeto Escola Verde">
+    <meta name="twitter:description" content="Educação ambiental e sustentabilidade na escola">
+    <meta name="twitter:image" content="Imagens/putsgrila.jpeg">
+    
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <style>
         /* Sistema de Design Avançado */
         :root {
@@ -660,11 +684,12 @@
             opacity: 0.8;
         }
 
-        /* Efeitos e Animações */
+        /* Efeitos e Animações Aprimoradas */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: var(--transicao-lenta);
+            will-change: transform, opacity;
         }
 
         .fade-in.visible {
@@ -672,11 +697,45 @@
             transform: translateY(0);
         }
 
+        /* Animação de pulso para elementos interativos */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-cta:hover {
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Efeito de brilho suave */
+        .card:hover {
+            box-shadow: 0 12px 30px rgba(46, 125, 50, 0.2);
+        }
+
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
         .delay-4 { transition-delay: 0.4s; }
         .delay-5 { transition-delay: 0.5s; }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--verde-pastel);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--verde-claro);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--verde-medio);
+        }
 
         /* Responsividade Avançada */
         @media (max-width: 992px) {
@@ -1083,14 +1142,15 @@
     </footer>
 
     <script>
-        // Menu Mobile
+        // Menu Mobile com melhorias de acessibilidade
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
         
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            const isActive = navLinks.classList.contains('active');
+            mobileMenuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.setAttribute('aria-expanded', isActive);
         });
         
         // Fechar menu ao clicar em um link
@@ -1098,10 +1158,20 @@
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
         });
         
-        // Scroll suave
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Scroll suave com fallback
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1110,34 +1180,106 @@
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                    const offsetTop = targetElement.offsetTop - 80;
+                    
+                    // Verificar suporte para scroll suave
+                    if ('scrollBehavior' in document.documentElement.style) {
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Fallback para navegadores antigos
+                        window.scrollTo(0, offsetTop);
+                    }
                 }
             });
         });
         
-        // Animação de aparecimento ao rolar
+        // Animação de aparecimento ao rolar com Intersection Observer
         const fadeElements = document.querySelectorAll('.fade-in');
         
-        const checkVisibility = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
-                }
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
             });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        } else {
+            // Fallback para navegadores antigos
+            const checkVisibility = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            window.addEventListener('load', checkVisibility);
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+        }
+        
+        // Lazy loading para imagens
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+        
+        // Adicionar atributos de acessibilidade
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.alt) {
+                img.alt = 'Imagem do Projeto Escola Verde';
+            }
+        });
+        
+        // Prevenir scroll quando menu mobile está aberto
+        const preventScroll = (e) => {
+            if (navLinks.classList.contains('active')) {
+                e.preventDefault();
+            }
         };
         
-        // Verificar ao carregar e ao rolar
-        window.addEventListener('load', checkVisibility);
-        window.addEventListener('scroll', checkVisibility);
+        document.addEventListener('touchmove', preventScroll, { passive: false });
         
-        // Ativar animações imediatamente se já estiverem visíveis
-        checkVisibility();
+        // Performance: debounce para eventos de scroll
+        let ticking = false;
+        const updateScroll = () => {
+            // Ações de scroll podem ser adicionadas aqui
+            ticking = false;
+        };
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        });
     </script>
 </body>
 </html>
