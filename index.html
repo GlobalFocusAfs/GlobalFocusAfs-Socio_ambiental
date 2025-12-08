@@ -306,11 +306,7 @@
             margin-bottom: 1.5rem;
         }
 
-<<<<<<< HEAD
-        /* Seção História - MODIFICADA PARA INCLUIR FOTOS */
-=======
-        /* Seção História */
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
+        /* Seção História - COM FOTOS */
         .timeline {
             position: relative;
             max-width: 900px;
@@ -361,17 +357,10 @@
 
         .timeline-content {
             background-color: var(--branco);
-<<<<<<< HEAD
             border-radius: var(--borda-arredondada);
             box-shadow: var(--sombra-suave);
             transition: var(--transicao-rapida);
             overflow: hidden;
-=======
-            padding: 2rem;
-            border-radius: var(--borda-arredondada);
-            box-shadow: var(--sombra-suave);
-            transition: var(--transicao-rapida);
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
         }
 
         .timeline-content:hover {
@@ -379,7 +368,6 @@
             box-shadow: var(--sombra-destaque);
         }
 
-<<<<<<< HEAD
         .timeline-image {
             width: 100%;
             height: 200px;
@@ -401,31 +389,20 @@
             padding: 2rem;
         }
 
-=======
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
         .timeline-date {
             font-weight: 600;
             color: var(--verde-claro);
             margin-bottom: 0.5rem;
         }
 
-<<<<<<< HEAD
-        /* NOVA: Seção Fotos */
+        /* Seção Galeria de Fotos */
         .gallery-section {
-=======
-        /* Seção Objetivos */
-        .objectives {
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
             background-color: var(--verde-pastel);
             position: relative;
             overflow: hidden;
         }
 
-<<<<<<< HEAD
         .gallery-section::before {
-=======
-        .objectives::before {
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
             content: '';
             position: absolute;
             top: -100px;
@@ -436,11 +413,7 @@
             border-radius: 50%;
         }
 
-<<<<<<< HEAD
         .gallery-section::after {
-=======
-        .objectives::after {
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
             content: '';
             position: absolute;
             bottom: -150px;
@@ -451,7 +424,6 @@
             border-radius: 50%;
         }
 
-<<<<<<< HEAD
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -466,6 +438,7 @@
             box-shadow: var(--sombra-suave);
             transition: var(--transicao-lenta);
             height: 250px;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -506,8 +479,6 @@
             position: relative;
         }
 
-=======
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -606,11 +577,7 @@
             font-size: 1.8rem;
         }
 
-<<<<<<< HEAD
-        /* Seção Equipe - MODIFICADA PARA INCLUIR VICE-LÍDER */
-=======
-        /* Seção Equipe */
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
+        /* Seção Equipe - COM VICE-LÍDER */
         .team-section {
             background-color: var(--off-white);
         }
@@ -817,14 +784,6 @@
             animation: pulse 1.5s infinite;
         }
 
-<<<<<<< HEAD
-=======
-        /* Efeito de brilho suave */
-        .card:hover {
-            box-shadow: 0 12px 30px rgba(46, 125, 50, 0.2);
-        }
-
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
@@ -847,6 +806,57 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: var(--verde-medio);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10000;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
         }
 
         /* Responsividade Avançada */
@@ -916,13 +926,10 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-<<<<<<< HEAD
 
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
-=======
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
         }
 
         @media (max-width: 576px) {
@@ -941,13 +948,21 @@
             .cards-container {
                 grid-template-columns: 1fr;
             }
-<<<<<<< HEAD
 
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-=======
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 3rem;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 1.5rem;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -973,10 +988,7 @@
                 <li><a href="#historia" class="nav-link">História</a></li>
                 <li><a href="#objetivos" class="nav-link">Objetivos</a></li>
                 <li><a href="#importancia" class="nav-link">Importância</a></li>
-<<<<<<< HEAD
                 <li><a href="#fotos" class="nav-link">Fotos</a></li>
-=======
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                 <li><a href="#equipe" class="nav-link">Equipe</a></li>
             </ul>
         </div>
@@ -999,7 +1011,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image fade-in">
-                    <img src="Imagens\putsgrila.jpeg" alt="Escola Sustentável">
+                    <img src="Imagens/putsgrila.jpeg" alt="Escola Sustentável">
                 </div>
                 <div class="about-content fade-in delay-1">
                     <h2>Sobre a Escola</h2>
@@ -1015,11 +1027,7 @@
         </div>
     </section>
 
-<<<<<<< HEAD
-    <!-- História do Projeto - MODIFICADA COM FOTOS -->
-=======
-    <!-- História do Projeto -->
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
+    <!-- História do Projeto - COM FOTOS -->
     <section id="historia" class="history-section">
         <div class="container">
             <div class="section-header fade-in">
@@ -1031,7 +1039,6 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-<<<<<<< HEAD
                         <div class="timeline-image">
                             <img src="Imagens/Lançamento.jpeg" alt="Lançamento do Projeto">
                         </div>
@@ -1040,18 +1047,12 @@
                             <h3>Lançamento Oficial</h3>
                             <p>O Projeto Escola Verde teve início durante a semana do Meio Ambiente, fazendo parte do Junho Ambiental do município de Redenção, no dia 05/06/2024, com a presença de representantes da Secretaria Municipal de Agricultura, Meio Ambiente e Desenvolvimento Urbano.</p>
                         </div>
-=======
-                        <div class="timeline-date">Junho 2024</div>
-                        <h3>Lançamento Oficial</h3>
-                        <p>O Projeto Escola Verde teve início durante a semana do Meio Ambiente, fazendo parte do Junho Ambiental do município de Redenção, no dia 05/06/2024, com a presença de representantes da Secretaria Municipal de Agricultura, Meio Ambiente e Desenvolvimento Urbano.</p>
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                     </div>
                 </div>
                 
                 <div class="timeline-item fade-in delay-1">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-<<<<<<< HEAD
                         <div class="timeline-image">
                             <img src="Imagens/Inspiração.jpeg" alt="Inspiração Ambiental">
                         </div>
@@ -1060,18 +1061,12 @@
                             <h3>Inspiração para Ação</h3>
                             <p>A motivação surgiu da necessidade de criar uma consciência ecológica na comunidade escolar e transformar a escola em um espaço mais sustentável, servindo como modelo de práticas ambientais para a comunidade.</p>
                         </div>
-=======
-                        <div class="timeline-date">Motivação Inicial</div>
-                        <h3>Inspiração para Ação</h3>
-                        <p>A motivação surgiu da necessidade de criar uma consciência ecológica na comunidade escolar e transformar a escola em um espaço mais sustentável, servindo como modelo de práticas ambientais para a comunidade.</p>
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                     </div>
                 </div>
                 
                 <div class="timeline-item fade-in delay-2">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-<<<<<<< HEAD
                         <div class="timeline-image">
                             <img src="Imagens/Primeiros.jpeg" alt="Primeiros Participantes">
                         </div>
@@ -1080,11 +1075,6 @@
                             <h3>Primeiros Participantes</h3>
                             <p>O projeto começou com o engajamento de professores comprometidos e alunos entusiasmados, formando o núcleo inicial que estruturou as primeiras ações de sustentabilidade na escola.</p>
                         </div>
-=======
-                        <div class="timeline-date">Envolvimento Inicial</div>
-                        <h3>Primeiros Participantes</h3>
-                        <p>O projeto começou com o engajamento de professores comprometidos e alunos entusiasmados, formando o núcleo inicial que estruturou as primeiras ações de sustentabilidade na escola.</p>
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                     </div>
                 </div>
             </div>
@@ -1102,11 +1092,7 @@
             <div class="cards-container">
                 <div class="card fade-in">
                     <div class="card-header">
-<<<<<<< HEAD
                         <img src="Imagens/Sustentabilidade.jpeg" alt="Sustentabilidade">
-=======
-                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sustentabilidade">
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                     </div>
                     <div class="card-body">
                         <div class="card-icon">
@@ -1119,11 +1105,7 @@
                 
                 <div class="card fade-in delay-1">
                     <div class="card-header">
-<<<<<<< HEAD
                         <img src="Imagens/Conscientização.jpeg" alt="Conscientização">
-=======
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Conscientização">
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                     </div>
                     <div class="card-body">
                         <div class="card-icon">
@@ -1136,11 +1118,7 @@
                 
                 <div class="card fade-in delay-2">
                     <div class="card-header">
-<<<<<<< HEAD
                         <img src="Imagens/Ações.jpeg" alt="Ações Práticas">
-=======
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ações Práticas">
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                     </div>
                     <div class="card-body">
                         <div class="card-icon">
@@ -1202,8 +1180,7 @@
         </div>
     </section>
 
-<<<<<<< HEAD
-    <!-- NOVA SEÇÃO: Fotos do Projeto -->
+    <!-- SEÇÃO: Galeria de Fotos -->
     <section id="fotos" class="gallery-section">
         <div class="container">
             <div class="section-header fade-in">
@@ -1221,52 +1198,49 @@
                 </div>
                 
                 <div class="gallery-item fade-in delay-1">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Horta escolar">
+                    <img src="Imagens/Lançamento.jpeg" alt="Lançamento do Projeto">
                     <div class="gallery-caption">
-                        <h3>Horta Escolar</h3>
-                        <p>Alunos cultivando horta sustentável</p>
+                        <h3>Evento de Lançamento</h3>
+                        <p>Cerimônia oficial do projeto</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item fade-in delay-2">
-                    <img src="https://images.unsplash.com/photo-1544717305-99670f9c28f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Reunião de equipe">
+                    <img src="Imagens/Sustentabilidade.jpeg" alt="Práticas Sustentáveis">
                     <div class="gallery-caption">
-                        <h3>Reunião de Equipe</h3>
-                        <p>Planejamento das atividades do projeto</p>
+                        <h3>Sustentabilidade</h3>
+                        <p>Implementação de práticas ambientais</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item fade-in delay-3">
-                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Palestra educativa">
+                    <img src="Imagens/Conscientização.jpeg" alt="Conscientização">
                     <div class="gallery-caption">
-                        <h3>Palestra Educativa</h3>
-                        <p>Conscientização ambiental na escola</p>
+                        <h3>Conscientização</h3>
+                        <p>Atividades educativas sobre meio ambiente</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item fade-in delay-4">
-                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Reciclagem">
+                    <img src="Imagens/Ações.jpeg" alt="Ações Práticas">
                     <div class="gallery-caption">
-                        <h3>Coleta Seletiva</h3>
-                        <p>Separação de materiais recicláveis</p>
+                        <h3>Ações Práticas</h3>
+                        <p>Implementação de ações concretas</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item fade-in delay-5">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Evento de lançamento">
+                    <img src="Imagens/Primeiros.jpeg" alt="Primeiros Participantes">
                     <div class="gallery-caption">
-                        <h3>Evento de Lançamento</h3>
-                        <p>Cerimônia oficial do projeto</p>
+                        <h3>Equipe Inicial</h3>
+                        <p>Primeiros participantes do projeto</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Equipe - MODIFICADA PARA INCLUIR VICE-LÍDER -->
-=======
-    <!-- Equipe -->
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
+    <!-- Equipe - COM VICE-LÍDER -->
     <section id="equipe" class="team-section">
         <div class="container">
             <div class="section-header fade-in">
@@ -1319,8 +1293,7 @@
                 </div>
             </div>
             
-<<<<<<< HEAD
-            <!-- Líder e Vice-Líder -->
+            <!-- Liderança Estudantil - COM VICE-LÍDER -->
             <div class="team-category fade-in delay-2">
                 <h3 class="team-category-title">Liderança Estudantil</h3>
                 <div class="team-grid">
@@ -1329,36 +1302,19 @@
                             <img src="Imagens/lider.jpeg" alt="Sofia Maia">
                         </div>
                         <div class="member-info">
-                            <h4 class="member-name">Sofia Maia </h4>
+                            <h4 class="member-name">Sofia Maia</h4>
                             <p class="member-role">Aluna Líder do Projeto</p>
                         </div>
                     </div>
                     
-                    <!-- NOVO: Vice-Líder -->
+                    <!-- VICE-LÍDER -->
                     <div class="team-member">
                         <div class="member-photo">
-                            <!-- Adicione a imagem do vice-líder aqui -->
-                            <img src="Imagens/Vice.jpeg" alt="Vice-Líder do Projeto">
+                            <img src="Imagens/Vice.jpeg" alt="Jones Filho">
                         </div>
                         <div class="member-info">
                             <h4 class="member-name">Jones Filho</h4>
                             <p class="member-role">Aluno Vice-Líder do Projeto</p>
-                            <p class="member-role" style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">
-                                (Aguardando nome e foto)
-                            </p>
-=======
-            <!-- Aluno Líder -->
-            <div class="team-category fade-in delay-2">
-                <h3 class="team-category-title">Aluno Líder</h3>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-photo">
-                            <img src="Imagens/Calebe.jpeg" alt="John Calebe">
-                        </div>
-                        <div class="member-info">
-                            <h4 class="member-name">John Calebe</h4>
-                            <p class="member-role">Aluno Líder do Projeto</p>
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                         </div>
                     </div>
                 </div>
@@ -1392,10 +1348,7 @@
                         <li><a href="#sobre"><i class="fas fa-chevron-right"></i> Sobre o Projeto</a></li>
                         <li><a href="#historia"><i class="fas fa-chevron-right"></i> Nossa História</a></li>
                         <li><a href="#objetivos"><i class="fas fa-chevron-right"></i> Objetivos</a></li>
-<<<<<<< HEAD
                         <li><a href="#fotos"><i class="fas fa-chevron-right"></i> Galeria de Fotos</a></li>
-=======
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
                         <li><a href="#equipe"><i class="fas fa-chevron-right"></i> Nossa Equipe</a></li>
                     </ul>
                 </div>
@@ -1417,16 +1370,24 @@
         </div>
     </footer>
 
+    <!-- Lightbox HTML -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
     <script>
-        // Menu Mobile com melhorias de acessibilidade
+        // Menu Mobile
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
         
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            const isActive = navLinks.classList.contains('active');
-            mobileMenuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            mobileMenuBtn.setAttribute('aria-expanded', isActive);
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
         
         // Fechar menu ao clicar em um link
@@ -1434,214 +1395,82 @@
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
         });
         
-        // Fechar menu ao clicar fora
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar')) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-        
-        // Scroll suave com fallback
+        // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    const offsetTop = targetElement.offsetTop - 80;
-                    
-                    // Verificar suporte para scroll suave
-                    if ('scrollBehavior' in document.documentElement.style) {
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    } else {
-                        // Fallback para navegadores antigos
-                        window.scrollTo(0, offsetTop);
-                    }
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
         
-        // Animação de aparecimento ao rolar com Intersection Observer
+        // Animação de aparecimento
         const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
         
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
+        fadeElements.forEach(element => observer.observe(element));
+        
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        
+        // Abrir lightbox ao clicar em imagens da galeria
+        document.querySelectorAll('.gallery-item img, .timeline-image img, .card-header img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImage.src = this.src;
+                lightboxImage.alt = this.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
-            
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-        } else {
-            // Fallback para navegadores antigos
-            const checkVisibility = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight - 100) {
-                        element.classList.add('visible');
-                    }
-                });
-            };
-            
-            window.addEventListener('load', checkVisibility);
-            window.addEventListener('scroll', checkVisibility);
-            checkVisibility();
+        });
+        
+        // Fechar lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
         
-<<<<<<< HEAD
-        // Lightbox para galeria de fotos
-        const galleryItems = document.querySelectorAll('.gallery-item img');
-        
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const src = this.getAttribute('src');
-                const alt = this.getAttribute('alt') || 'Imagem do Projeto Escola Verde';
-                
-                // Criar lightbox
-                const lightbox = document.createElement('div');
-                lightbox.className = 'lightbox';
-                lightbox.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.9);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 9999;
-                    cursor: pointer;
-                `;
-                
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = alt;
-                img.style.cssText = `
-                    max-width: 90%;
-                    max-height: 90%;
-                    object-fit: contain;
-                    border-radius: 8px;
-                `;
-                
-                const closeBtn = document.createElement('button');
-                closeBtn.innerHTML = '<i class="fas fa-times"></i>';
-                closeBtn.style.cssText = `
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
-                    background: none;
-                    border: none;
-                    color: white;
-                    font-size: 2rem;
-                    cursor: pointer;
-                    z-index: 10000;
-                `;
-                
-                lightbox.appendChild(img);
-                lightbox.appendChild(closeBtn);
-                document.body.appendChild(lightbox);
-                
-                // Fechar lightbox
-                const closeLightbox = () => {
-                    document.body.removeChild(lightbox);
-                };
-                
-                lightbox.addEventListener('click', (e) => {
-                    if (e.target === lightbox || e.target === closeBtn || e.target.closest('button')) {
-                        closeLightbox();
-                    }
-                });
-                
-                // Fechar com ESC
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        closeLightbox();
-                    }
-                });
-            });
-=======
-        // Lazy loading para imagens
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src || img.src;
-                        img.classList.add('loaded');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            document.querySelectorAll('img').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-        
-        // Adicionar atributos de acessibilidade
-        document.querySelectorAll('img').forEach(img => {
-            if (!img.alt) {
-                img.alt = 'Imagem do Projeto Escola Verde';
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
             }
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
+        });
+        
+        // Fechar com ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
         });
         
         // Prevenir scroll quando menu mobile está aberto
-        const preventScroll = (e) => {
+        document.addEventListener('touchmove', function(e) {
             if (navLinks.classList.contains('active')) {
                 e.preventDefault();
             }
-        };
+        }, { passive: false });
         
-        document.addEventListener('touchmove', preventScroll, { passive: false });
-        
-        // Performance: debounce para eventos de scroll
-        let ticking = false;
-        const updateScroll = () => {
-            // Ações de scroll podem ser adicionadas aqui
-            ticking = false;
-        };
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateScroll);
-                ticking = true;
-            }
-        });
-<<<<<<< HEAD
-        
-        // Adicionar carregamento lazy para imagens
-        if ('loading' in HTMLImageElement.prototype) {
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            images.forEach(img => {
-                img.src = img.dataset.src;
-            });
-        }
-        
-        // Adicionar atributos de acessibilidade
-        document.querySelectorAll('img').forEach(img => {
+        // Carregamento otimizado de imagens
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
             if (!img.alt) {
                 img.alt = 'Imagem do Projeto Escola Verde';
             }
@@ -1649,8 +1478,3 @@
     </script>
 </body>
 </html>
-=======
-    </script>
-</body>
-</html>
->>>>>>> b7505b0b232fd8efb17dd8aa3f9e045b8f313300
